@@ -21,6 +21,7 @@
 
 //-------------------------------------Variables--------------------------------
 
+const outputScore = document.getElementById("outputScore") ;
 let innerNumberLeft;        // Saves generated number as a variable.
 let innerNumberRight;        // -§-
 let score = 0;               // Sets initial score to 0.
@@ -28,26 +29,28 @@ let score = 0;               // Sets initial score to 0.
 //--------------------------------------Numbers--------------------------------
 
 function generateRandomNumber(){
-     return Math.floor(Math.random() *100)-1            //  Generates a random whole number between 0-99 and subtracts "-1"
+     return Math.floor(Math.random() *100)-1                                //  Generates a random whole number between 0-99 and subtracts "-1"
 }
 
 
 numberLeft()
 function numberLeft(){
-document.getElementById("numberLeft").innerHTML = generateRandomNumber()    // Updates "numberLeft" with a number.
+    let numberLeft = document.getElementById("numberLeft")
+    numberLeft.innerHTML = generateRandomNumber()                        // Updates "numberLeft" with a number.
 
-innerNumberLeft = parseInt(document.getElementById("numberLeft").innerHTML)  // Makes sure there are no decimal in the number.
+innerNumberLeft = parseInt(numberLeft.innerHTML)                        // Makes sure there are no decimal in the number.
 }
 
 numberRight()
 function numberRight(){
-   document.getElementById("numberRight").innerHTML = generateRandomNumber()   // Updates "numberRight" with a number.
+    let numberRight = document.getElementById("numberRight")
+     numberRight.innerHTML = generateRandomNumber()                  // Updates "numberRight" with a number.
   
    
-     innerNumberRight = parseInt(document.getElementById("numberRight").innerHTML)  // Makes sure there a no decimals in the number.
+     innerNumberRight = parseInt(numberRight.innerHTML)             // Makes sure there a no decimals in the number.
 }
 
-function nextNum(){     // Packaged "numberLeft(), numberRight()"
+function nextNum(){                                                 // Packaged "numberLeft(), numberRight()"
     numberLeft() ;
     numberRight() ;
 }
@@ -56,13 +59,13 @@ function nextNum(){     // Packaged "numberLeft(), numberRight()"
 
 
 function lowerThan(){
-    if (innerNumberLeft >= innerNumberRight) {    // If "numberLeft" is lower than "numberRight". 
+    if (innerNumberLeft >= innerNumberRight) {                        // If "numberLeft" is lower than "numberRight". 
             
-        document.getElementById("outputScore").innerHTML = score += 1 ;     // Adds one point if true.
+        outputScore.innerHTML = score ++ ;                           // Adds one point if true.
     
-    nextNum() ;            // Updates numbers in "numberLeft", "numberRight".
+    nextNum() ;                                                     // Updates numbers in "numberLeft", "numberRight".
 } else 
-    document.getElementById("outputScore").innerHTML = score -= 1 ;       // If wrong input was given, remove one point.
+    outputScore.innerHTML = score -= 10 ;                           // If wrong input was given, remove ten points.
         nextNum() ;
 }
 
@@ -71,11 +74,11 @@ function lowerThan(){
 function equalTo(){
     if (innerNumberLeft === innerNumberRight) {
                                                                         
-        document.getElementById("outputScore").innerHTML = score += 1 ;
+        outputScore.innerHTML = score ++ ;
     
     nextNum() ;
 } else 
-    document.getElementById("outputScore").innerHTML = score -= 1 ;
+        outputScore.innerHTML = score -= 10 ;
         nextNum() ;
 }
 
@@ -83,11 +86,11 @@ function equalTo(){
 function greaterThan(){
     if (innerNumberLeft <= innerNumberRight) {
             
-        document.getElementById("outputScore").innerHTML = score += 1 ;
+        outputScore.innerHTML = score ++ ;
     
     nextNum() ;
 } else 
-    document.getElementById("outputScore").innerHTML = score -= 1 ;
+    outputScore.innerHTML = score -= 10 ;                               
         nextNum() ;
 }
 
@@ -99,7 +102,7 @@ function greaterThan(){
 
 
 
-console.log ( typeof (generateRandomNumber()))            // Checks what type generateRandomNumber() is (string, number, boolean). 
+console.log(typeof (generateRandomNumber()))            // Checks what type generateRandomNumber() is (string, number, boolean). 
 
 console.log(typeof (innerNumberLeft, innerNumberRight))   
 
