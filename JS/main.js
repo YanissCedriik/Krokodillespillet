@@ -24,7 +24,7 @@
 const outputScore = document.getElementById("outputScore") ;
 let innerNumberLeft;        // Saves generated number as a variable.
 let innerNumberRight;        // -§-
-let score = 0;               // Sets initial score to 0.
+let score = 1;               // Sets initial score to 1.
 
 //--------------------------------------Numbers--------------------------------
 
